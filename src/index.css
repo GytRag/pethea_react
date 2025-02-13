@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+.lilita-one-regular {
+    font-family: "Lilita One", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.App {
+    font-family: "Lato", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+.gap10 {
+    gap: 10px;
+}
+.gap2 {
+    gap: 2px;
+}
+.border {
+    border: 1px solid black;
+}
+
+.pad5 {
+    padding: 5px;
+}
+.pad2 {
+    padding: 2px !important;
+}
+.marg-bot {
+    margin-bottom: 5px;
+}
+
+
+.cursor-point {
+    cursor: pointer;
+}
+
+.txt-center {
+    text-align: center;
+}
+
+.fs-10 {
+    font-size: 10px;
+}
+.fs-14 {
+    font-size: 14px;
+}
+.fs-35 {
+    font-size: 35px;
+}
+.fs-50 {
+    font-size: 50px;
+}
+.fs-100 {
+    font-size: 100px;
+}
+
+.grow1 {
+    flex: 1;
+}
+.grow2 {
+    flex: 2;
+}
+.grow3 {
+    flex: 3;
+}
+.borderBlue {
+    border: 1px solid #438bb4 !important;
+}
+
+/*----------toll bar------------*/
+.tollbar {
+    border: 1px solid #438bb4;
+    color: #438bb4;
+    object-fit: cover;
+
+}
+
+.tollbar img{
+    width: 120px;
+}
+
+.link {
+    text-decoration: none;
+    color: #438bb4;
+    font-weight: 600;
+}
+.dropTxtGreen {
+    background-color: white !important;
+    color: #438bb4 !important;
+    text-decoration: none !important;
+    font-weight: 600 !important;
+}
+
+.link-clicked {
+    text-decoration: underline !important;
+    cursor: default !important;
+    pointer-events: none !important;
+}
+
+.link:hover, .dropTxtGreen:hover{
+    text-decoration: underline !important;
+}
+
+.dropBgGreen {
+    background-color: #438bb4 !important;
+    border: 1px solid #438bb4 !important;
+    color: white;
+}
+
+.dropdown-toggle::after {
+    display: none !important;
+}
+
+.dropdown-toggle:hover  {
+    background-color: #1f6287 !important;
+    border: 1px solid #1f6287 !important;
+    color: white !important;
+}
+
+.show .dropdown-toggle {
+    background-color: white !important;
+    color: #438bb4 !important;
+}
+
+
+/*----------------------------*/
+
+/*--------buttons---------*/
+
+.btnLog {
+    background-color: white !important;
+    color: #438bb4 !important;
+    border: none !important;
+}
+.btnLog:hover {
+    background-color: #1f6287 !important;
+    color: white !important;
+}
+
+
+.btnBgGreen, .btnTxtGreen {
+    border-radius: 5px !important;
+    font-size: 10px !important;
+    padding: 7px 14px !important;
+    transition: 0.2s ease !important;
+}
+
+.btnBgGreen {
+    background-color: #438bb4 !important;
+    border: 1px solid #438bb4 !important;
+    color: white !important;
+}
+.btnTxtGreen {
+    background-color: white !important;
+    color: #438bb4 !important;
+    border: 1px solid #438bb4 !important;
+}
+
+.btnTxtGreen:hover, .btnBgGreen:hover  {
+    background-color: #1f6287 !important;
+    border: 1px solid #1f6287 !important;
+    color: white !important;
+}
+
+.btnCloseGreen {
+    background-color: white !important;
+    color: #438bb4 !important;
+    border: 3px solid #ffffff !important;
+    padding: 1px 2px !important;
+}
+
+.btnCloseGreen:hover {
+    border: 3px solid #438bb4 !important;
+}
+
+
+
+/*-------pet list && medic list-----*/
+.petList, .medicList {
+    position: relative;
+}
+
+/*-----pet card && medic list-------*/
+.petCard, .medicCard {
+    border: 1px solid #438bb4;
+}
+
+.inputBlue {
+    border: 1px solid #438bb4;
+    padding: 0 5px !important;
+}
+
+
+
+/*---------------@ media screen---------------------*/
+@media screen and (width < 576px) {
+    .pad2 {
+        padding: 2px !important;
+    }
+    .medic-grid, .pet-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+@media screen and (width < 456px) {
+    .pad2 {
+        padding: 2px 0 !important;
+    }
+    .medic-grid, .pet-grid {
+        display: grid !important;
+        grid-template-columns: repeat(1, 1fr) !important;
+    }
+}
