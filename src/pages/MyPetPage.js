@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import PetCard from "../components/PetCard";
 
 const MyPetPage = () => {
@@ -26,6 +26,9 @@ const MyPetPage = () => {
 
     return (
         <div className='petList container d-flex flex-column align-items-center'>
+            <div className='d-flex justify-content-between align-items-center w-100'>
+                <h2>My pets</h2>
+            </div>
             <div className='row mx-1 mx-sm-0 w-100 pet-grid'>
                 {myPets && myPets.map(x => <PetCard key={x._id} pet={x}/>)}
             </div>
