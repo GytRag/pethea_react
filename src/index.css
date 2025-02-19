@@ -219,7 +219,8 @@
 
 .gallery > div {
     width: 100%;
-    height: minmax(100px, 200px);
+    max-height: 200px;
+    min-height: 100px;
     overflow: hidden;
     position: relative;
     display: flex;
