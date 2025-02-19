@@ -26,7 +26,6 @@ const MedicationPage = () => {
                 if(data.success) {
                     setMeds(data.meds)
                 }
-
             })
     },[change])
 
@@ -94,7 +93,6 @@ const MedicationPage = () => {
             .then(data => {
                 setModal(false)
                 setChange(!change)
-                console.log(data)
             })
     }
 

@@ -69,6 +69,13 @@ const TollBar = () => {
                             </Link>
                     </Dropdown.Item>}
 
+                    {(loggedInDoctor || loggedInPatient) && <Dropdown.Item tag={Link} className={'dropTxtGreen'}>
+                            <Link to='/user' className={clickedPage === 'User' ? 'link link-clicked' : 'link'}
+                                  onClick={() => setClickedPage('User')}>
+                                User
+                            </Link>
+                    </Dropdown.Item>}
+
                     {(!loggedInDoctor && !loggedInPatient) && <Dropdown.Item tag={Link} className={'dropTxtGreen'}>
                             <Link to='/login' className={clickedPage === 'Login' ? 'link link-clicked' : 'link'}
                                   onClick={() => setClickedPage('Login')}>
@@ -113,6 +120,12 @@ const TollBar = () => {
                       className={clickedPage === 'Medications' ? 'link link-clicked' : 'link'}
                       onClick={() => setClickedPage('Medications')}
                 >Medications
+                </Link>}
+
+                {(loggedInDoctor || loggedInPatient) && <Link to='/user'
+                      className={clickedPage === 'User' ? 'link link-clicked' : 'link'}
+                      onClick={() => setClickedPage('User')}
+                >User
                 </Link>}
 
 

@@ -7,6 +7,7 @@ import PetHealthPage from "./pages/PetHealthPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import MyPetPage from "./pages/MyPetPage";
+import UserPage from "./pages/UserPage";
 
 
 
@@ -27,6 +28,7 @@ function App() {
                     <Route path="/login" element={<LoginPage/>} />
                     <Route path="/register" element={<RegisterPage/>} />
                     <Route path="/mypets" element={<MyPetPage/>} />
+                    <Route path="/user" element={<UserPage/>} />
                 </Routes>
             </div>
         </main>
