@@ -21,7 +21,7 @@ const IndexPage = () => {
             <div className='gallery row mx-1 mx-sm-0'>
                 {images && images.map(x =>
                     <div key={x._id}
-                    className={`rounded-2 pad2 col-12 col-sm-6 col-md-4 col-xl-3 ${isHovered === x._id? "active" : ""}`}
+                    className={`gallery-div rounded-2 pad2 col-12 col-sm-6 col-md-4 col-xl-3 ${isHovered === x._id? "active" : ""}`}
                     onMouseEnter={() => setHovered(x._id)}
                     onMouseLeave={() => setHovered(null)}>
                         <img className='gallery-img rounded-2' src={x.image} alt={x._id}/>
