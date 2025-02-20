@@ -37,19 +37,22 @@ const RegisterPage = () => {
 
 
     return (
-        <div className='d-flex justify-content-center gap-2'>
-            <div className='d-flex flex-column align-items-center gap-1'>
-                <div>Register for doctor</div>
-                <input className='inputBlue' type="text" placeholder='username' ref={doctorNameRef} />
-                <input className='inputBlue' type="password" placeholder='password' ref={passOneRef} />
-                <input className='inputBlue' type="password" placeholder='password' ref={passTwoRef} />
-                <input className='inputBlue' type="password" placeholder='special code' ref={specialCodeRef} />
-                <div>
-                    <button className='btn btnBgGreen' onClick={registerDoctor}>Register</button>
-                </div>
+        <div className='container-fluid'>
+            <div className='d-flex justify-content-center gap-2'>
+                <div className='d-flex flex-column align-items-center gap-1'>
+                    <div>Register for doctor</div>
+                    <input className='inputBlue' type="text" placeholder='username' ref={doctorNameRef}/>
+                    <input className='inputBlue' type="password" placeholder='password' ref={passOneRef}/>
+                    <input className='inputBlue' type="password" placeholder='password' ref={passTwoRef}/>
+                    <input className='inputBlue' type="password" placeholder='special code' ref={specialCodeRef}/>
+                    <div>
+                        <button className='btn btnBgGreen' onClick={registerDoctor}>Register</button>
+                    </div>
 
+                </div>
             </div>
         </div>
+
     );
 };
 

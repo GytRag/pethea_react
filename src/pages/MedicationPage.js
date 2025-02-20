@@ -145,59 +145,62 @@ const MedicationPage = () => {
 
 
     return (
-        <div className='medicList container d-flex flex-column align-items-center'>
-            <div className='d-flex justify-content-between align-items-center w-100'>
-                <h2 className=''>Medication List</h2>
-                {loggedInDoctor && <button onClick={handleShow} className='btnBgGreen'>ADD MEDICATION</button>}
-            </div>
+        <div className='container-fluid'>
+            <div className='medicList container d-flex flex-column align-items-center'>
+                <div className='d-flex justify-content-between align-items-center w-100'>
+                    <h2 className=''>Medication List</h2>
+                    {loggedInDoctor && <button onClick={handleShow} className='btnBgGreen'>ADD MEDICATION</button>}
+                </div>
 
-            <div className='row mx-1 mx-sm-0 w-100 medic-grid'>
+                <div className='row mx-1 mx-sm-0 w-100 medic-grid'>
 
-                {meds && meds.map(x => <MedicationCard
-                    meds={x}
-                    key={x._id}
+                    {meds && meds.map(x => <MedicationCard
+                        meds={x}
+                        key={x._id}
 
-                    setModalDel={setModalDel}
-                    setDeleteMedic={setDeleteMedic}
+                        setModalDel={setModalDel}
+                        setDeleteMedic={setDeleteMedic}
 
-                    setModalEdit={setModalEdit}
-                    setIdEdit={setIdEdit}
-                    setDefOne={setDefOne}
-                    setDefSec={setDefSec}
-                />)}
+                        setModalEdit={setModalEdit}
+                        setIdEdit={setIdEdit}
+                        setDefOne={setDefOne}
+                        setDefSec={setDefSec}
+                    />)}
 
-                {/*modal add medication*/}
-                {modal && <ModalComp
-                    handleClose={handleClose}
-                    modal={modal}
-                    addAdd={addMedic}
-                    modalObj={modalObj}
-                    defOne={null}
-                    defSec={null}
-                />}
-
-
-                {/*modal edit medication*/}
-                {modalEdit && <ModalComp
-                    handleClose={handleCloseEdit}
-                    modal={modalEdit}
-                    addAdd={editMedic}
-                    modalObj={editModalObj}
-                    idEdit={idEdit}
-                    defOne={defOne}
-                    defSec={defSec}
-                />}
+                    {/*modal add medication*/}
+                    {modal && <ModalComp
+                        handleClose={handleClose}
+                        modal={modal}
+                        addAdd={addMedic}
+                        modalObj={modalObj}
+                        defOne={null}
+                        defSec={null}
+                    />}
 
 
-                {/*modal delete medication*/}
-                {modalDel && <DeleteModalComp
-                    item={deleteMedic}
-                    modalDel={modalDel}
-                    handleCloseDel={handleCloseDel}
-                    deleteFunc={deleteMedicFunc}
-                />}
+                    {/*modal edit medication*/}
+                    {modalEdit && <ModalComp
+                        handleClose={handleCloseEdit}
+                        modal={modalEdit}
+                        addAdd={editMedic}
+                        modalObj={editModalObj}
+                        idEdit={idEdit}
+                        defOne={defOne}
+                        defSec={defSec}
+                    />}
+
+
+                    {/*modal delete medication*/}
+                    {modalDel && <DeleteModalComp
+                        item={deleteMedic}
+                        modalDel={modalDel}
+                        handleCloseDel={handleCloseDel}
+                        deleteFunc={deleteMedicFunc}
+                    />}
+                </div>
             </div>
         </div>
+
 
     );
 };

@@ -104,35 +104,38 @@ const PetPage = () => {
 
 
     return (
-        <div className='petList container d-flex flex-column align-items-center'>
-            <div className='d-flex justify-content-between align-items-center w-100'>
-                <h2 className=''>Pet List</h2>
-                <button onClick={handleShow} className='btnBgGreen'>ADD PET</button>
-            </div>
+        <div className='container-fluid'>
+            <div className='petList container d-flex flex-column align-items-center'>
+                <div className='d-flex justify-content-between align-items-center w-100'>
+                    <h2 className=''>Pet List</h2>
+                    <button onClick={handleShow} className='btnBgGreen'>ADD PET</button>
+                </div>
 
-            <div className='row mx-1 mx-sm-0 w-100 pet-grid'>
-                 {pets && pets.map((pet) => <PetCard key={pet._id}
-                                                     pet={pet}
-                                                     setModalDel={setModalDel}
-                                                     setDeletePet={setDeletePet}/>)}
-            </div>
+                <div className='row mx-1 mx-sm-0 w-100 pet-grid'>
+                    {pets && pets.map((pet) => <PetCard key={pet._id}
+                                                        pet={pet}
+                                                        setModalDel={setModalDel}
+                                                        setDeletePet={setDeletePet}/>)}
+                </div>
 
 
-            {modal && <ModalComp
-                handleClose={handleClose}
-                modal={modal}
-                addAdd={addPet}
-                modalObj={modalObj}
+                {modal && <ModalComp
+                    handleClose={handleClose}
+                    modal={modal}
+                    addAdd={addPet}
+                    modalObj={modalObj}
                 />}
 
-            {modalDel && <DeleteModalComp
-                item={deletePet}
-                modalDel={modalDel}
-                handleCloseDel={handleCloseDel}
-                deleteFunc={deletePetFunc}
-            />}
+                {modalDel && <DeleteModalComp
+                    item={deletePet}
+                    modalDel={modalDel}
+                    handleCloseDel={handleCloseDel}
+                    deleteFunc={deletePetFunc}
+                />}
 
+            </div>
         </div>
+
     );
 };
 

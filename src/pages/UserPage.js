@@ -42,27 +42,30 @@ const UserPage = () => {
 
 
     return (
-        <div className='container d-flex flex-column align-items-center'>
-            <div className='mw300px w-100'>
-                {loggedInDoctor && <h5> <b className='txtGreen'>pethea doctor:</b> {loggedInDoctor}</h5>}
-                {loggedInPatient && <h5> <b className='txtGreen'>pethea patient:</b> {loggedInPatient}</h5>}
-            </div>
-            <div className='userPage rounded-2 p-2 w-100 d-flex flex-column gap-1'>
-                <div>Password</div>
-                <input className='inputBlue' type="password" ref={passwordRef}/>
-                <div>New password</div>
-                <input className='inputBlue' type="password" ref={passOneRef}/>
-                <div>Repeat new password</div>
-                <input className='inputBlue' type="password" ref={passTwoRef}/>
-                {error && <div>{error}</div>}
-                <div className='d-flex justify-content-center'>
-                    <button className='btnBgGreen'
-                            onClick={updatePassword}>UPDATE PASSWORD
-                    </button>
+        <div className='container-fluid'>
+            <div className='container d-flex flex-column align-items-center'>
+                <div className='mw300px w-100'>
+                    {loggedInDoctor && <h5><b className='txtGreen'>pethea Doctor:</b> {loggedInDoctor}</h5>}
+                    {loggedInPatient && <h5><b className='txtGreen'>pethea Patient:</b> {loggedInPatient}</h5>}
                 </div>
+                <div className='userPage rounded-2 p-2 w-100 d-flex flex-column gap-1'>
+                    <div>Password</div>
+                    <input className='inputBlue' type="password" ref={passwordRef}/>
+                    <div>New password</div>
+                    <input className='inputBlue' type="password" ref={passOneRef}/>
+                    <div>Repeat new password</div>
+                    <input className='inputBlue' type="password" ref={passTwoRef}/>
+                    {error && <div>{error}</div>}
+                    <div className='d-flex justify-content-center'>
+                        <button className='btnBgGreen'
+                                onClick={updatePassword}>UPDATE PASSWORD
+                        </button>
+                    </div>
 
+                </div>
             </div>
         </div>
+
     );
 };
 

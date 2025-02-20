@@ -69,26 +69,33 @@ const LoginPage = () => {
     }
 
     return (
-        <div className='d-flex justify-content-center gap-2'>
-            <div className='d-flex flex-column align-items-center gap-1'>
-                <div>Login for doctor</div>
-                <input className='inputBlue' type="text" placeholder='username' ref={doctorNameRef} defaultValue="doctor"/>
-                <input className='inputBlue' type="password" placeholder='password' ref={doctorPassRef} defaultValue="doctor"/>
-                <div>
-                    <button className='btn btnBgGreen' onClick={loginDoctor}>Login</button>
-                </div>
+        <div className='container-fluid'>
+            <div className='d-flex justify-content-center gap-2 flex-wrap'>
+                <div className='d-flex flex-column align-items-center gap-1'>
+                    <div>Login for doctor</div>
+                    <input className='inputBlue' type="text" placeholder='username' ref={doctorNameRef}
+                           defaultValue="doctor"/>
+                    <input className='inputBlue' type="password" placeholder='password' ref={doctorPassRef}
+                           defaultValue="doctor"/>
+                    <div>
+                        <button className='btn btnBgGreen' onClick={loginDoctor}>Login</button>
+                    </div>
 
-            </div>
-            <div className='d-flex flex-column align-items-center gap-1'>
-                <div>Login for patient</div>
-                <input className='inputBlue' type="text" placeholder='email' ref={patientEmailRef} defaultValue="email@email.com"/>
-                <input className='inputBlue' type="password" placeholder='password' ref={patientPassRef} defaultValue="email@email.com"/>
-                <div>
-                    <button className='btn btnBgGreen' onClick={loginPatient}>Login</button>
                 </div>
+                <div className='d-flex flex-column align-items-center gap-1'>
+                    <div>Login for patient</div>
+                    <input className='inputBlue' type="text" placeholder='email' ref={patientEmailRef}
+                           defaultValue="email@email.com"/>
+                    <input className='inputBlue' type="password" placeholder='password' ref={patientPassRef}
+                           defaultValue="email@email.com"/>
+                    <div>
+                        <button className='btn btnBgGreen' onClick={loginPatient}>Login</button>
+                    </div>
 
+                </div>
             </div>
         </div>
+
     );
 };
 
