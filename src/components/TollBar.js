@@ -27,7 +27,7 @@ const TollBar = () => {
     return (
         <div>
             <div className='topLine p-2'>
-                top line
+
             </div>
             <div className='fixed-top rounded-2 m-2 py-1 px-2 tollbar d-flex justify-content-between align-items-center'>
                 <div className='d-flex align-items-center'>
@@ -46,7 +46,7 @@ const TollBar = () => {
 
                     <Dropdown.Menu>
                         <Dropdown.Item tag={Link} className={'dropTxtGreen'}>
-                            <LinkComp linkTo={""} name={"About"}/>
+                            <LinkComp linkTo={""} name={"Home"}/>
                         </Dropdown.Item>
 
 
@@ -86,7 +86,7 @@ const TollBar = () => {
 
                 <div className='d-sm-flex gap-2 d-none align-items-center'>
 
-                    <LinkComp linkTo={""} name={"About"}/>
+                    <LinkComp linkTo={""} name={"Home"}/>
                     <LinkComp linkTo={"gallery"} name={"Gallery"}/>
                     {loggedInDoctor && <LinkComp linkTo={"pets"} name={"Pets"}/>}
                     {loggedInPatient && <LinkComp linkTo={"mypets"} name={"My pets"}/>}

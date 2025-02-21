@@ -5,7 +5,7 @@ const useStore = create((set) => ({
     petList: null,
     loggedInDoctor: null,
     loggedInPatient: null,
-    clickedPage: "About",
+    clickedPage: "Home",
 
     updateMedication: (medic) => set({medication: medic}),
     updatePets: (pet) => set({petList: pet}),

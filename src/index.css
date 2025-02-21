@@ -12,7 +12,7 @@
     font-weight: 400;
     font-style: normal;
     min-height: 100vh;
-    background-color: #e5ecf1;
+    background-color: #fafafa;
 }
 
 
@@ -88,6 +88,7 @@
 }
 .topLine {
     background-color: #438bb4;
+    height: 35px;
 }
 .tollbar img{
     width: 120px;
@@ -138,6 +139,10 @@
 
 
 /*----------------------------*/
+
+
+
+
 
 /*-------------footer----------*/
 
@@ -199,12 +204,31 @@
 
 /*--------------------container----------------*/
 .container-fluid {
-
-    padding: 30px 0;
+    padding: 50px 0;
 }
 
+/*--------------index page-----------*/
 
+.indexTop {
+    min-height: 500px;
+    position: relative;
+    overflow: hidden;
+    background-image: url("https://img.freepik.com/free-photo/handsome-doctor-veterinarian-smiling-examining-pet-vet-clinic-checking-pug-dog-with-stethoscope-s_1258-155659.jpg?t=st=1740135972~exp=1740139572~hmac=2be8febef968b4553e1acb3b3d6abd39556bccd5bd1f9fdecabf4b1d2fad7a91&w=1380");
+    background-repeat: no-repeat;
+    background-position: top center;
+}
 
+.indexTop-about {
+    position: relative;
+    width: 500px;
+    z-index: 1;
+}
+
+.indexTop-txt {
+    border-left: #438bb4 3px solid;
+    padding-left: 15px;
+    color: #296587;
+}
 
 /*-------pet list && medic list-----*/
 .petList, .medicList {
@@ -298,6 +322,50 @@
 }
 
 /*---------------@ media screen---------------------*/
+
+@media screen and (width < 1400px) {
+
+    .indexTop {
+        background-position: top right;
+    }
+
+}
+@media screen and (width < 1200px) {
+
+    .indexTop-txt {
+        max-width: 300px;
+    }
+
+}
+
+@media screen and (width < 992px) {
+
+    .indexTop {
+        background-position: top right calc( -80px);
+    }
+
+}
+
+@media screen and (width < 768px) {
+    .indexTop {
+        background-image: url("./images/bgIndexTop3.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .indexTop-about {
+        width: 100%;
+    }
+
+    .indexTop > img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+
+
 @media screen and (width < 576px) {
     .pad2 {
         padding: 2px !important;
