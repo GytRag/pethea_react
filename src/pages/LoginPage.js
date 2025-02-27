@@ -1,6 +1,7 @@
 import React, {useRef} from 'react';
 import useStore from "../store/main";
 import {useNavigate} from "react-router-dom";
+import http from '../plugin/https'
 
 const LoginPage = () => {
 
@@ -21,23 +22,14 @@ const LoginPage = () => {
             password: doctorPassRef.current.value
         }
 
-        const options = {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(item)
-        }
-
-        fetch('http://localhost:2001/login', options)
-            .then(res => res.json())
+        http.post('http://localhost:2001/login', item)
             .then(data => {
                 if(!data.success) console.log(data)
-                if(data.success) {
-                    localStorage.setItem("token", data.token)
-                    setLoggedInDoctor(doctorNameRef.current.value)
-                    navigate("/")
-                }
+                        if(data.success) {
+                            localStorage.setItem("token", data.token)
+                            setLoggedInDoctor(doctorNameRef.current.value)
+                            navigate("/")
+                        }
             })
 
     }
@@ -48,16 +40,7 @@ const LoginPage = () => {
             password: patientPassRef.current.value
         }
 
-        const options = {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(item)
-        }
-
-        fetch('http://localhost:2001/loginuser', options)
-            .then(res => res.json())
+        http.post('http://localhost:2001/loginuser', item)
             .then(data => {
                 if(!data.success) console.log(data)
                 if(data.success) {

@@ -3,6 +3,7 @@ import {useParams} from "react-router-dom";
 import LogPresComp from "../components/LogPresComp";
 import ModalComp from "../components/ModalComp";
 import useStore from "../store/main";
+import http from '../plugin/https'
 
 
 const PetHealthPage = () => {
@@ -16,23 +17,13 @@ const PetHealthPage = () => {
 
     const [change, setChange] = useState(false);
 
-    const options = {
-        method: "GET",
-        headers: {
-            authorization: localStorage.getItem('token')
-        }
-    }
-
     useEffect(() => {
-
-        fetch('http://localhost:2001/pets/' + id, options)
-            .then(res => res.json())
+        http.getToken('http://localhost:2001/pets/' + id)
             .then(data => {
                 if(!data.success)console.log(data)
                 if(data.success) {
                     setPets(data.pet)
-                    fetch('http://localhost:2001/preslogs/' + id, options)
-                        .then(res => res.json())
+                    http.getToken('http://localhost:2001/preslogs/' + id)
                         .then(pet => {
                             setPres(pet.pres)
                             setLogs(pet.logs)
@@ -66,7 +57,7 @@ const PetHealthPage = () => {
 
 
     // Add prescription and log function
-    async function addPresLogs(description, date){
+    function addPresLogs(description, date){
 
         let PresMeds = null
         let newPresLogs = {
@@ -80,24 +71,14 @@ const PetHealthPage = () => {
         }
         if(modalLogs) PresMeds = "logs"
 
-        const option = {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                authorization: localStorage.getItem("token")
-            },
-            body: JSON.stringify(newPresLogs)
-        };
-
-        await fetch(`http://localhost:2001/${PresMeds}`, option)
+        http.postToken(`http://localhost:2001/${PresMeds}`, newPresLogs)
         setModalPres(false)
         setModalLogs(false)
         setChange(!change)
-
     }
 
     return (
-        <div className='mx-2'>
+        <div className='container-fluid'>
             {pets && <div>
                 <div className='d-flex justify-content-between align-items-center w-100'>
                     <h2 className=''>{pets.name}: Health Records</h2>

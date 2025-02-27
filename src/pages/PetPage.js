@@ -2,7 +2,7 @@ import React, {useState, useRef, useEffect} from 'react';
 import PetCard from "../components/PetCard";
 import ModalComp from "../components/ModalComp";
 import DeleteModalComp from "../components/DeleteModalComp";
-
+import http from '../plugin/https'
 
 
 const PetPage = () => {
@@ -10,17 +10,8 @@ const PetPage = () => {
     const [pets, setPets] = useState(null);
     const [change, setChange] = useState(false);
 
-
-    const options = {
-        method: "GET",
-        headers: {
-            authorization: localStorage.getItem("token"),
-        }
-    }
-
     useEffect(() => {
-        fetch('http://localhost:2001/pets', options)
-            .then(res => res.json())
+        http.getToken('http://localhost:2001/pets')
             .then(data => {
                 if(!data.success) console.log(data)
                 if(data.success) setPets(data.pets)
@@ -59,16 +50,7 @@ const PetPage = () => {
             "client_email": email
         };
 
-        const option = {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                authorization: localStorage.getItem("token")
-            },
-            body: JSON.stringify(newPet)
-        };
-        fetch("http://localhost:2001/addpet", option)
-            .then(res => res.json())
+        http.postToken("http://localhost:2001/addpet", newPet)
             .then(data => {
                 setModal(false)
                 if(!data.success) console.log(data)
@@ -85,21 +67,9 @@ const PetPage = () => {
             id: deletePet._id
         }
 
-        const option = {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                authorization: localStorage.getItem("token")
-            },
-            body: JSON.stringify(item)
-        };
-        fetch("http://localhost:2001/deletepet", option)
-            .then(res => res.json())
-            .then(data => {
-                setModalDel(false)
-                setChange(!change)
-            })
-
+        http.postToken("http://localhost:2001/deletepet", item)
+        setModalDel(false)
+        setChange(!change)
     }
 
 

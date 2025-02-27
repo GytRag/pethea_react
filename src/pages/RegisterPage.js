@@ -1,6 +1,7 @@
 import React, {useRef} from 'react';
 import useStore from "../store/main";
 import {useNavigate} from "react-router-dom";
+import http from '../plugin/https'
 
 const RegisterPage = () => {
 
@@ -19,20 +20,10 @@ const RegisterPage = () => {
             special_code: specialCodeRef.current.value
         }
 
-       const option = {
-            method: "POST",
-           headers: {
-                "Content-Type": "application/json"
-           },
-           body: JSON.stringify(newDoctor)
-       }
-
-       fetch('http://localhost:2001/register', option)
-           .then(res => res.json())
-           .then(data => {
-               console.log(data)
-           })
-
+        http.post('http://localhost:2001/register', newDoctor)
+            .then(data => {
+                console.log(data)
+            })
     }
 
 

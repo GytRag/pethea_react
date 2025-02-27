@@ -1,5 +1,6 @@
 import {useState, useRef} from 'react';
 import useStore from "../store/main";
+import http from '../plugin/https'
 
 const UserPage = () => {
 
@@ -18,26 +19,16 @@ const UserPage = () => {
            passTwo: passTwoRef.current.value
        }
 
-       const options = {
-           method: "POST",
-           headers: {
-               "Content-Type": "application/json",
-               authorization: localStorage.getItem("token")
-           },
-           body: JSON.stringify(item)
-       }
-
-        fetch('http://localhost:2001/updatepass', options)
-            .then(res => res.json())
-            .then(data => {
-                if(!data.success) setError(data.message)
-                if(data.success) {
-                    setError(data.message);
-                    passwordRef.current.value = null;
-                    passOneRef.current.value = null;
-                    passTwoRef.current.value = null;
-                }
-            })
+       http.postToken('http://localhost:2001/updatepass', item)
+           .then(data => {
+               if(!data.success) setError(data.message)
+               if(data.success) {
+                   setError(data.message);
+                   passwordRef.current.value = null;
+                   passOneRef.current.value = null;
+                   passTwoRef.current.value = null;
+               }
+           })
     }
 
 

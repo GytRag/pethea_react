@@ -209,7 +209,7 @@
 
 /*--------------index page-----------*/
 
-.indexTop {
+.indexFirst {
     min-height: 500px;
     position: relative;
     overflow: hidden;
@@ -218,13 +218,13 @@
     background-position: top center;
 }
 
-.indexTop-about {
+.indexFirst-about {
     position: relative;
     width: 500px;
     z-index: 1;
 }
 
-.indexTop-txt {
+.indexFirst-txt {
     border-left: #438bb4 3px solid;
     padding-left: 15px;
     color: #296587;
@@ -325,14 +325,14 @@
 
 @media screen and (width < 1400px) {
 
-    .indexTop {
+    .indexFirst {
         background-position: top right;
     }
 
 }
 @media screen and (width < 1200px) {
 
-    .indexTop-txt {
+    .indexFirst-txt {
         max-width: 300px;
     }
 
@@ -340,25 +340,25 @@
 
 @media screen and (width < 992px) {
 
-    .indexTop {
+    .indexFirst {
         background-position: top right calc( -80px);
     }
 
 }
 
 @media screen and (width < 768px) {
-    .indexTop {
+    .indexFirst {
         background-image: url("./images/bgIndexTop3.png");
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
     }
 
-    .indexTop-about {
+    .indexFirst-about {
         width: 100%;
     }
 
-    .indexTop > img {
+    .indexFirst > img {
         width: 100%;
         height: auto;
     }

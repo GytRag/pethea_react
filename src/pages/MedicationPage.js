@@ -3,7 +3,7 @@ import MedicationCard from "../components/MedicationCard";
 import DeleteModalComp from "../components/DeleteModalComp";
 import ModalComp from "../components/ModalComp";
 import useStore from "../store/main";
-
+import http from '../plugin/https'
 const MedicationPage = () => {
 
     const [meds, setMeds] = useState(null);
@@ -11,16 +11,8 @@ const MedicationPage = () => {
 
     const {loggedInDoctor, loggedInPatient} = useStore((state) => state);
 
-    const options = {
-        method: "GET",
-        headers: {
-            authorization: localStorage.getItem("token"),
-        }
-    }
-
     useEffect(() => {
-        fetch('http://localhost:2001/meds', options)
-            .then(res => res.json())
+        http.getToken('http://localhost:2001/meds')
             .then(data => {
                 if(!data.success)console.log(data)
                 if(data.success) {
@@ -80,16 +72,7 @@ const MedicationPage = () => {
             "description": description
         };
 
-        const option = {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                authorization: localStorage.getItem('token')
-            },
-            body: JSON.stringify(newMed)
-        };
-        fetch("http://localhost:2001/addmedc", option)
-            .then(res => res.json())
+        http.postToken("http://localhost:2001/addmedc", newMed)
             .then(data => {
                 setModal(false)
                 setChange(!change)
@@ -99,44 +82,24 @@ const MedicationPage = () => {
 
     // Edit medication function
     function editMedic(name, description) {
-
         if (idEdit) {
-
             const editMed = {
                 "name": name,
                 "description": description
             };
-
-            const option = {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    authorization: localStorage.getItem("token")
-                },
-                body: JSON.stringify(editMed)
-            };
-            fetch("http://localhost:2001/medsedite/" + idEdit, option)
-                .then(res => res.json())
+            http.postToken("http://localhost:2001/medsedite/" + idEdit, editMed)
                 .then(data => {
                     setModalEdit(false)
                     setIdEdit(null)
                     setChange(!change)
                 })
         }
-
     }
 
 
     // Delete medication function
     function deleteMedicFunc() {
-
-        const option = {
-            method: "POST",
-            headers: {
-                authorization: localStorage.getItem("token")
-            }
-        };
-        fetch("http://localhost:2001/medsdelete/" + deleteMedic._id, option)
+        http.postToken("http://localhost:2001/medsdelete/" + deleteMedic._id)
             .then(() => {
                 setModalDel(false)
                 setChange(!change)

@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import pethea from '../images/pethea.png'
+import http from '../plugin/https'
+
 
 const GalleryPage = () => {
 
@@ -7,8 +9,7 @@ const GalleryPage = () => {
     const [isHovered, setHovered] = useState(null);
 
     useEffect(() => {
-        fetch('http://localhost:2001/gallery')
-            .then(res => res.json())
+        http.get('http://localhost:2001/gallery')
             .then(data => {
                 if(data.success) setImages(data.images)
             })
