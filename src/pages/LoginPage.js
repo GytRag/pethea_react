@@ -5,7 +5,7 @@ import http from '../plugin/https'
 
 const LoginPage = () => {
 
-    const {setLoggedInDoctor, setLoggedInPatient} = useStore((state) => state);
+    const {setLoggedInDoctor, setLoggedInPatient, mainLink} = useStore((state) => state);
     const navigate = useNavigate();
 
     const doctorNameRef = useRef(null);
@@ -22,14 +22,14 @@ const LoginPage = () => {
             password: doctorPassRef.current.value
         }
 
-        http.post('http://localhost:2001/login', item)
+        http.post('/login', item)
             .then(data => {
-                if(!data.success) console.log(data)
-                        if(data.success) {
-                            localStorage.setItem("token", data.token)
-                            setLoggedInDoctor(doctorNameRef.current.value)
-                            navigate("/")
-                        }
+                if (!data.success) console.log(data)
+                if (data.success) {
+                    localStorage.setItem("token", data.token)
+                    setLoggedInDoctor(data.myUser)
+                    navigate(mainLink + "/")
+                }
             })
 
     }
@@ -40,13 +40,13 @@ const LoginPage = () => {
             password: patientPassRef.current.value
         }
 
-        http.post('http://localhost:2001/loginuser', item)
+        http.post('/loginuser', item)
             .then(data => {
-                if(!data.success) console.log(data)
-                if(data.success) {
+                if (!data.success) console.log(data)
+                if (data.success) {
                     localStorage.setItem("token", data.token)
                     setLoggedInPatient(patientEmailRef.current.value)
-                    navigate("/")
+                    navigate(mainLink + "/")
                 }
             })
     }

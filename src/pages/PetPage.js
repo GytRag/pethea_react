@@ -1,5 +1,5 @@
 import React, {useState, useRef, useEffect} from 'react';
-import PetCard from "../components/PetCard";
+import PetCard from "../cards/PetCard";
 import ModalComp from "../components/ModalComp";
 import DeleteModalComp from "../components/DeleteModalComp";
 import http from '../plugin/https'
@@ -11,7 +11,7 @@ const PetPage = () => {
     const [change, setChange] = useState(false);
 
     useEffect(() => {
-        http.getToken('http://localhost:2001/pets')
+        http.getToken('/pets')
             .then(data => {
                 if(!data.success) console.log(data)
                 if(data.success) setPets(data.pets)
@@ -50,7 +50,7 @@ const PetPage = () => {
             "client_email": email
         };
 
-        http.postToken("http://localhost:2001/addpet", newPet)
+        http.postToken("/addpet", newPet)
             .then(data => {
                 setModal(false)
                 if(!data.success) console.log(data)
@@ -67,7 +67,8 @@ const PetPage = () => {
             id: deletePet._id
         }
 
-        http.postToken("http://localhost:2001/deletepet", item)
+        http.postToken("/deletepet", item)
+            .then()
         setModalDel(false)
         setChange(!change)
     }

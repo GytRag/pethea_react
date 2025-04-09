@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import MedicationCard from "../components/MedicationCard";
+import MedicationCard from "../cards/MedicationCard";
 import DeleteModalComp from "../components/DeleteModalComp";
 import ModalComp from "../components/ModalComp";
 import useStore from "../store/main";
@@ -12,7 +12,7 @@ const MedicationPage = () => {
     const {loggedInDoctor, loggedInPatient} = useStore((state) => state);
 
     useEffect(() => {
-        http.getToken('http://localhost:2001/meds')
+        http.getToken('/meds')
             .then(data => {
                 if(!data.success)console.log(data)
                 if(data.success) {
@@ -72,7 +72,7 @@ const MedicationPage = () => {
             "description": description
         };
 
-        http.postToken("http://localhost:2001/addmedc", newMed)
+        http.postToken("/addmedc", newMed)
             .then(data => {
                 setModal(false)
                 setChange(!change)
@@ -87,7 +87,7 @@ const MedicationPage = () => {
                 "name": name,
                 "description": description
             };
-            http.postToken("http://localhost:2001/medsedite/" + idEdit, editMed)
+            http.postToken("/medsedite/" + idEdit, editMed)
                 .then(data => {
                     setModalEdit(false)
                     setIdEdit(null)
@@ -99,7 +99,7 @@ const MedicationPage = () => {
 
     // Delete medication function
     function deleteMedicFunc() {
-        http.postToken("http://localhost:2001/medsdelete/" + deleteMedic._id)
+        http.postToken("/medsdelete/" + deleteMedic._id)
             .then(() => {
                 setModalDel(false)
                 setChange(!change)

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const LogPresComp = ({item}) => {
+const LogPresCard = ({item}) => {
 
 
     return (
@@ -13,4 +13,4 @@ const LogPresComp = ({item}) => {
     );
 };
 
-export default LogPresComp;
+export default LogPresCard;

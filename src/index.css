@@ -230,6 +230,30 @@
     color: #296587;
 }
 
+.indexSecond-about p{
+    max-width: 500px;
+}
+
+
+/*DOCTOR CARD*/
+
+.doctorCard {
+    box-shadow: 2px 0px 14px -8px rgba(0,0,0,0.75);
+
+}
+
+.doctorCard img{
+    width: 150px;
+    height: 150px;
+}
+
+
+
+
+
+
+
+
 /*-------pet list && medic list-----*/
 .petList, .medicList {
     position: relative;
@@ -249,7 +273,12 @@
 
 /*------user page-----------------*/
 
-.userPage {
+
+.userPage img {
+    width: 100px;
+}
+
+.userPageUpdate {
     border: 1px solid #438bb4;
     max-width: 300px;
     background-color: #f8f8f8;

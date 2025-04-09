@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useParams} from "react-router-dom";
-import LogPresComp from "../components/LogPresComp";
+import LogPresCard from "../cards/LogPresCard";
 import ModalComp from "../components/ModalComp";
 import useStore from "../store/main";
 import http from '../plugin/https'
@@ -18,12 +18,12 @@ const PetHealthPage = () => {
     const [change, setChange] = useState(false);
 
     useEffect(() => {
-        http.getToken('http://localhost:2001/pets/' + id)
+        http.getToken('/pets/' + id)
             .then(data => {
                 if(!data.success)console.log(data)
                 if(data.success) {
                     setPets(data.pet)
-                    http.getToken('http://localhost:2001/preslogs/' + id)
+                    http.getToken('/preslogs/' + id)
                         .then(pet => {
                             setPres(pet.pres)
                             setLogs(pet.logs)
@@ -71,7 +71,8 @@ const PetHealthPage = () => {
         }
         if(modalLogs) PresMeds = "logs"
 
-        http.postToken(`http://localhost:2001/${PresMeds}`, newPresLogs)
+        http.postToken(`/${PresMeds}`, newPresLogs)
+            .then()
         setModalPres(false)
         setModalLogs(false)
         setChange(!change)
@@ -109,9 +110,9 @@ const PetHealthPage = () => {
                 </div>
 
                 <div className='d-flex flex-wrap '>
-                    {logs && displayLogs && logs.map((x) => <LogPresComp key={x._id} item={x}/>)}
+                    {logs && displayLogs && logs.map((x) => <LogPresCard key={x._id} item={x}/>)}
 
-                    {pres && displayPres && pres.map((x) => <LogPresComp key={x._id} item={x}/>)}
+                    {pres && displayPres && pres.map((x) => <LogPresCard key={x._id} item={x}/>)}
                 </div>
 
                 {modalPres && loggedInDoctor && <ModalComp

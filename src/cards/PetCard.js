@@ -4,9 +4,9 @@ import useStore from "../store/main";
 const PetCard = ({pet, setModalDel, setDeletePet}) => {
 
     const navigate = useNavigate();
-    const {setClickedPage} = useStore((state) => state);
+    const {setClickedPage, mainLink} = useStore((state) => state);
     function viewLog() {
-        navigate("/pets/" + pet._id)
+        navigate(mainLink + "/pets/" + pet._id)
         setClickedPage("")
     }
 

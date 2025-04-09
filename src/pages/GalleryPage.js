@@ -9,7 +9,7 @@ const GalleryPage = () => {
     const [isHovered, setHovered] = useState(null);
 
     useEffect(() => {
-        http.get('http://localhost:2001/gallery')
+        http.get('/gallery')
             .then(data => {
                 if(data.success) setImages(data.images)
             })

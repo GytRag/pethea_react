@@ -1,8 +1,11 @@
+const mainUrl = "/api/pethea"
+// const mainUrl = "http://localhost:3021/pethea"
+
 module.exports =  {
     get: (url) => {
         return new Promise(resolve => {
 
-            fetch(url)
+            fetch(mainUrl + url)
                 .then(res => res.json())
                 .then(data => {
                     resolve(data)
@@ -21,7 +24,7 @@ module.exports =  {
                 body: JSON.stringify(data)
             }
 
-            fetch(url, options)
+            fetch(mainUrl + url, options)
                 .then(res => res.json())
                 .then(data => {
                     resolve(data)
@@ -36,11 +39,10 @@ module.exports =  {
                 method: "GET",
                 headers: {
                     authorization: localStorage.getItem('token'),
-                    "content-type": "application/json"
                 }
             }
 
-            fetch(url, options)
+            fetch(mainUrl + url, options)
                 .then(res => res.json())
                 .then(data => {
                     resolve(data)
@@ -60,7 +62,7 @@ module.exports =  {
                 body: JSON.stringify(data)
             }
 
-            fetch(url, options)
+            fetch(mainUrl + url, options)
                 .then(res => res.json())
                 .then(data => {
                     resolve(data)

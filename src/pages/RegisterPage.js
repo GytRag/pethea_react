@@ -20,7 +20,7 @@ const RegisterPage = () => {
             special_code: specialCodeRef.current.value
         }
 
-        http.post('http://localhost:2001/register', newDoctor)
+        http.post('/register', newDoctor)
             .then(data => {
                 console.log(data)
             })

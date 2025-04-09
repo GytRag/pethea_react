@@ -4,10 +4,12 @@ import useStore from "../store/main";
 const LinkComp = ({linkTo, name}) => {
 
     const {clickedPage,
-        setClickedPage} = useStore((state) => state);
+        setClickedPage,
+        mainLink
+    } = useStore((state) => state);
 
     return (
-        <Link to={`/${linkTo}`} className={clickedPage === `${name}` ? 'link link-clicked' : 'link'}
+        <Link to={`${mainLink}/${linkTo}`} className={clickedPage === `${name}` ? 'link link-clicked' : 'link'}
               onClick={() => setClickedPage(`${name}`)}
         >{name}</Link>
     );

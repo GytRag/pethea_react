@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import PetCard from "../components/PetCard";
+import PetCard from "../cards/PetCard";
 import http from '../plugin/https'
 
 const MyPetPage = () => {
@@ -7,7 +7,7 @@ const MyPetPage = () => {
     const [myPets, setMyPets] = useState(null);
 
     useEffect(() => {
-        http.getToken('http://localhost:2001/mypets')
+        http.getToken('/mypets')
             .then(data => {
                 if (!data.success) console.log(data)
                 if (data.success) setMyPets(data.pets)

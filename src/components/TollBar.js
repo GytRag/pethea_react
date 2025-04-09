@@ -10,7 +10,8 @@ const TollBar = () => {
     const {loggedInDoctor,
         loggedInPatient,
         setLoggedInDoctor,
-        setLoggedInPatient
+        setLoggedInPatient,
+        mainLink
      } = useStore((state) => state);
 
     const navigate = useNavigate();
@@ -20,7 +21,7 @@ const TollBar = () => {
         setLoggedInDoctor(null);
         setLoggedInPatient(null);
         localStorage.removeItem("token");
-        navigate("/");
+        navigate(mainLink + "/");
     }
 
 
