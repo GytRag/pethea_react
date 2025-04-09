@@ -6,7 +6,7 @@ const useStore = create((set) => ({
     loggedInDoctor: null,
     loggedInPatient: null,
     clickedPage: "Home",
-    mainLink: "/pethea",
+    mainLink: "",
     updateMedication: (medic) => set({medication: medic}),
     updatePets: (pet) => set({petList: pet}),
     setLoggedInDoctor: (doctor) => set({loggedInDoctor: doctor}),

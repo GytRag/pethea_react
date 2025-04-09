@@ -1,5 +1,5 @@
-const mainUrl = "/api/pethea"
-// const mainUrl = "http://localhost:3021/pethea"
+// const mainUrl = "/api/pethea"
+const mainUrl = "http://localhost:3022/pethea"
 
 module.exports =  {
     get: (url) => {
