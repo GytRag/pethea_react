@@ -2,6 +2,7 @@ import React, {useRef, useState, useEffect} from 'react';
 import Button from "react-bootstrap/Button";
 import Modal from 'react-bootstrap/Modal';
 import useStore from "../store/main";
+import http from "../plugin/https";
 
 const ModalComp = ({handleClose, modal, addAdd, modalObj, defOne, defSec}) => {
 
@@ -26,22 +27,12 @@ const ModalComp = ({handleClose, modal, addAdd, modalObj, defOne, defSec}) => {
         return emailPattern.test(email);
     }
 
-
     useEffect(() => {
-            const options = {
-                method: "GET",
-                headers: {
-                    authorization: localStorage.getItem("token"),
-                }
-            }
-
-            fetch('http://localhost:2001/meds', options)
-                .then(res => res.json())
-                .then(data => {
-                    updateMedication(data.meds)
-                })
-
-    }, [])
+        http.getToken('/meds')
+            .then(data => {
+                updateMedication(data.meds)
+            })
+    }, []);
 
     function newObj() {
 

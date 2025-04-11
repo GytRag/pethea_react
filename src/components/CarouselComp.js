@@ -42,17 +42,27 @@ const CarouselComp = ({doctors}) => {
                 <div onClick={() => currentSlide(-1)}>&#10094;</div>
 
                 <div>
-                    <div className='container-xxl d-flex justify-content-center gap-5'>
+                    <div className='d-none container d-md-flex justify-content-center'>
                         {allDoctors && allDoctors.map((x, i) =>
                             <div key={x._id}>
-                                {i < 3 && <DoctorCard
-                                    item={x}
-                                    index={i}
-                                    slideIndex={slideIndex}
-                                />}
-                            </div>
-                            )}
+                                {i < 3 && <DoctorCard item={x} index={i} slideIndex={slideIndex} />}
+                            </div>)}
                     </div>
+
+                    <div className='d-none container d-sm-flex d-md-none justify-content-center'>
+                        {allDoctors && allDoctors.map((x, i) =>
+                            <div key={x._id}>
+                                {i < 2 && <DoctorCard item={x} index={i} slideIndex={slideIndex} />}
+                            </div>)}
+                    </div>
+
+                    <div className='d-flex container d-sm-none justify-content-center'>
+                        {allDoctors && allDoctors.map((x, i) =>
+                            <div key={x._id}>
+                                {i < 1 && <DoctorCard item={x} index={i} slideIndex={slideIndex} />}
+                            </div>)}
+                    </div>
+
                 </div>
 
                 <div onClick={() => currentSlide(1)}>&#10095;</div>

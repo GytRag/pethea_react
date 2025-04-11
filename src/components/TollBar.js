@@ -11,7 +11,7 @@ const TollBar = () => {
         loggedInPatient,
         setLoggedInDoctor,
         setLoggedInPatient,
-        mainLink
+        setClickedPage
      } = useStore((state) => state);
 
     const navigate = useNavigate();
@@ -21,7 +21,8 @@ const TollBar = () => {
         setLoggedInDoctor(null);
         setLoggedInPatient(null);
         localStorage.removeItem("token");
-        navigate(mainLink + "/");
+        navigate("/");
+        setClickedPage('Home')
     }
 
 
@@ -30,7 +31,7 @@ const TollBar = () => {
             <div className='topLine p-2'>
 
             </div>
-            <div className='fixed-top rounded-2 m-2 py-1 px-2 tollbar d-flex justify-content-between align-items-center'>
+            <div className='shadow fixed-top rounded-2 m-2 py-1 px-2 tollbar d-flex justify-content-between align-items-center'>
                 <div className='d-flex align-items-center'>
                     <img src={pethea} alt="pethea"/>
                 </div>
@@ -47,9 +48,12 @@ const TollBar = () => {
 
                     <Dropdown.Menu>
                         <Dropdown.Item tag={Link} className={'dropTxtGreen'}>
-                            <LinkComp linkTo={""} name={"Home"}/>
+                            <LinkComp linkTo={"about"} name={"About"}/>
                         </Dropdown.Item>
 
+                        <Dropdown.Item tag={Link} className={'dropTxtGreen'}>
+                            <LinkComp linkTo={""} name={"Home"}/>
+                        </Dropdown.Item>
 
                         <Dropdown.Item tag={Link} className={'dropTxtGreen'}>
                             <LinkComp linkTo={"gallery"} name={"Gallery"}/>
@@ -86,7 +90,7 @@ const TollBar = () => {
                 </Dropdown>
 
                 <div className='d-sm-flex gap-2 d-none align-items-center'>
-
+                    <LinkComp linkTo={"about"} name={"About"}/>
                     <LinkComp linkTo={""} name={"Home"}/>
                     <LinkComp linkTo={"gallery"} name={"Gallery"}/>
                     {loggedInDoctor && <LinkComp linkTo={"pets"} name={"Pets"}/>}

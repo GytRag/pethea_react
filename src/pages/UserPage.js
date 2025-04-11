@@ -4,7 +4,7 @@ import http from '../plugin/https'
 
 const UserPage = () => {
 
-    const {loggedInDoctor, loggedInPatient, setLoggedInDoctor} = useStore((state) => state);
+    const {loggedInDoctor, loggedInPatient, setLoggedInDoctor, setLoggedInPatient} = useStore((state) => state);
     const [error, setError] = useState(null);
 
     const passwordRef = useRef(null);
@@ -41,7 +41,9 @@ const UserPage = () => {
             .then(data => {
                 if(!data.success) setError(data.message)
                 if(data.success) {
-                    setLoggedInDoctor(data.myUser)
+                    if(loggedInDoctor) setLoggedInDoctor(data.myUser)
+                    if(loggedInPatient) setLoggedInPatient(data.myUser)
+
                     setError(data.message);
                     imageRef.current.value = null;
                 }
@@ -55,7 +57,8 @@ const UserPage = () => {
                 <div className='mw300px w-100 userPage d-flex gap-2'>
                     {loggedInDoctor && <div><img src={loggedInDoctor.image} alt=""/></div>}
                     {loggedInDoctor && <h5><b className='txtGreen'>pethea Doctor:</b> {loggedInDoctor.name}</h5>}
-                    {loggedInPatient && <h5><b className='txtGreen'>pethea Patient:</b> {loggedInPatient}</h5>}
+                    {loggedInPatient && <div><img src={loggedInPatient.image} alt=""/></div>}
+                    {loggedInPatient && <h5><b className='txtGreen'>pethea Patient:</b> {loggedInPatient.client_email}</h5>}
                 </div>
                 <div className='userPageUpdate rounded-2 p-2 w-100 d-flex flex-column gap-1'>
                     <div>Password</div>
