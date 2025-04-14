@@ -10,6 +10,9 @@ module.exports =  {
                 .then(data => {
                     resolve(data)
                 })
+                .catch(err => {
+                    console.error("FETCH ERROR:", err);
+                });
 
         })
     },
@@ -29,7 +32,9 @@ module.exports =  {
                 .then(data => {
                     resolve(data)
                 })
-
+                .catch(err => {
+                    console.error("FETCH ERROR:", err);
+                });
         })
     },
     getToken: (url) => {
@@ -47,7 +52,9 @@ module.exports =  {
                 .then(data => {
                     resolve(data)
                 })
-
+                .catch(err => {
+                    console.error("FETCH ERROR:", err);
+                });
         })
     },
     postToken: (url, data) => {
@@ -67,7 +74,9 @@ module.exports =  {
                 .then(data => {
                     resolve(data)
                 })
-
+                .catch(err => {
+                    console.error("FETCH ERROR:", err);
+                });
         })
     }
 }

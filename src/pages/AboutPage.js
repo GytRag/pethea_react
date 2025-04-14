@@ -31,7 +31,7 @@ const AboutPage = () => {
                             </ul>
                         </div>
                         <div className='mt-2'>
-                            <div>Patient(user):</div>
+                            <div>Doctor:</div>
                             <ul>
                                 <li>Register with special code</li>
                                 <li>Log in</li>
@@ -61,10 +61,12 @@ const AboutPage = () => {
                         <div className='mt-2'>
                             <ul>
                                 <li>Create & read & update post for users & doctors</li>
-                                <li>Live chat using socket.io. If u want to check code of socket</li>
-                                <li>If you want to check out the socket.io code, check it out on another github project <a
-                                    href="https://github.com/GytRag/final_work_node" target='_blank'>back</a> <a
-                                    href="https://github.com/GytRag/final_work_react" target='_blank'>front</a></li>
+                                <li>Live chat using socket.io</li>
+                                <li>If you want to check out the socket.io code <a href="http://213.136.82.182:4000/"
+                                                                                   target='_blank'>CRUD + live chat</a>,
+                                    github project <a
+                                        href="https://github.com/GytRag/final_work_node" target='_blank'>back</a> <a
+                                        href="https://github.com/GytRag/final_work_react" target='_blank'>front</a></li>
                                 <li>& more content later...</li>
                             </ul>
                         </div>
