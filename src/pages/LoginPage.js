@@ -81,8 +81,17 @@ const LoginPage = () => {
                     <div>
                         <button className='btn btnBgGreen' onClick={loginPatient}>Login</button>
                     </div>
-
                 </div>
+
+
+                {/*/!*test && update inputs with forms*!/*/}
+                {/*<form action="">*/}
+                {/*    <input type="text" placeholder='first'/>*/}
+                {/*    <input type="text" placeholder='second'/>*/}
+                {/*    <button type='submit'>submit</button>*/}
+                {/*</form>*/}
+
+
             </div>
         </div>
 

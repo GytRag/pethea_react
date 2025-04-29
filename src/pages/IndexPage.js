@@ -2,19 +2,57 @@ import bgIndexTop from "../images/bgIndexTop.png"
 import CarouselComp from "../components/CarouselComp";
 import {useEffect, useState} from "react";
 import http from "../plugin/https";
+import ProductCard from "../cards/productCardComponents/ProductCard";
 
 
 const IndexPage = () => {
 
     const [doctors, setDoctors] = useState(null);
+    const [products, setProducts] = useState(null);
+    const [screenWidth, setScreenWidth] = useState(0);
 
     useEffect(() => {
-        http.get('/alldoctors')
+        http.get('/home')
             .then(data => {
                 if (!data.success) console.log(data)
-                if (data.success) setDoctors(data.doctors)
+                if (data.success) {
+                    setDoctors(data.doctors)
+                    const productsArr = [];
+                    if(screenWidth >= 375 && screenWidth < 576) {
+                        for (let i = 0; i < 2; i++) {productsArr.push(data.products[i])}
+                        setProducts(productsArr)
+                    }
+                    if(screenWidth >= 576 && screenWidth < 768) {
+                        for (let i = 0; i < 3; i++) {productsArr.push(data.products[i])}
+                        setProducts(productsArr)
+                    }
+                    if(screenWidth >= 768 && screenWidth < 992) {
+                        for (let i = 0; i < 4; i++) {productsArr.push(data.products[i])}
+                        setProducts(productsArr)
+                    }
+                    if(screenWidth >= 992) {
+                        for (let i = 0; i < 5; i++) {productsArr.push(data.products[i])}
+                        setProducts(productsArr)
+                    }
+                }
             })
-    }, [])
+    }, [screenWidth])
+
+    useEffect(() => {
+        const logScreenSize = () => {
+            // console.log(`Width: ${window.innerWidth}, Height: ${window.innerHeight}`);
+            setScreenWidth(window.innerWidth);
+        };
+        // Log initial size
+        logScreenSize();
+        // Log on resize
+        window.addEventListener('resize', logScreenSize);
+        // Cleanup listener on unmount
+        return () => {
+            window.removeEventListener('resize', logScreenSize);
+        };
+    }, []);
+
 
 
     return (
@@ -53,21 +91,39 @@ const IndexPage = () => {
                         molestias nostrum quod sequi, sunt tempora temporibus.</p>
                 </div>
 
-                <div className="container-xxl mb-5">
+                {!doctors && <div className='d-flex justify-content-center'>
+                    <div className='loader'></div>
+                </div>}
+
+                {doctors && <div className="container-xxl mb-5">
                     <CarouselComp doctors={doctors}/>
-                </div>
+                </div>}
 
 
             </div>
 
-            {/*maby pet shop here*/}
-            <div className='container-fluid indexThird'>
-                Here will be the content later..
+            {/*Pet Health Products*/}
+            <div className='container-fluid indexThird pt-0'>
+
+                <div className='container-xxl d-flex flex-column align-items-center'>
+                    <div className='text-center mb-5'>
+                        <h1>Pet Health Products</h1>
+                    </div>
+
+                    {!products && <div>
+                        <div className='loader'></div>
+                    </div>}
+
+                    {products && <div className='d-flex gap-3'>
+                        {products.map((x, i) => <ProductCard item={x} key={i}/>)}
+                    </div>}
+                </div>
+
             </div>
 
             {/*maby happy clients here*/}
             <div className='container-fluid indexFourth'>
-
+                <p>More content later...</p>
             </div>
 
         </div>
