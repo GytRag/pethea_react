@@ -36,7 +36,7 @@ const IndexPage = () => {
                     }
                 }
             })
-    }, [screenWidth])
+    }, [])
 
     useEffect(() => {
         const logScreenSize = () => {
