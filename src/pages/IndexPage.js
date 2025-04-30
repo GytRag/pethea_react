@@ -10,10 +10,12 @@ const IndexPage = () => {
     const [doctors, setDoctors] = useState(null);
     const [products, setProducts] = useState(null);
     const [screenWidth, setScreenWidth] = useState(0);
+    const [change, setChange] = useState(false);
 
     useEffect(() => {
         http.get('/home')
             .then(data => {
+                // console.log(data)
                 if (!data.success) console.log(data)
                 if (data.success) {
                     setDoctors(data.doctors)
@@ -36,7 +38,7 @@ const IndexPage = () => {
                     }
                 }
             })
-    }, [screenWidth])
+    }, [screenWidth, change])
 
     useEffect(() => {
         const logScreenSize = () => {
@@ -48,6 +50,7 @@ const IndexPage = () => {
         // Log on resize
         window.addEventListener('resize', logScreenSize);
         // Cleanup listener on unmount
+        setChange(!change);
         return () => {
             window.removeEventListener('resize', logScreenSize);
         };
